@@ -372,6 +372,8 @@ module ActiveRecord
       def set_standard_conforming_strings
         old, self.client_min_messages = client_min_messages, 'warning'
         execute("SET standard_conforming_strings = on", "SCHEMA")
+      ensure
+        self.client_min_messages = old
       end
 
       def supports_ddl_transactions?
