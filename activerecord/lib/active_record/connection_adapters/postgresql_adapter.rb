@@ -370,6 +370,7 @@ module ActiveRecord
       end
 
       def set_standard_conforming_strings
+        old, self.client_min_messages = client_min_messages, 'warning'
         execute("SET standard_conforming_strings = on", "SCHEMA")
       end
 
